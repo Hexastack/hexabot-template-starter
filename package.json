@@ -2,10 +2,30 @@
   "name": "my-hexabot",
   "version": "1.0.0",
   "description": "My new Hexabot project",
+  "scripts": {
+    "format": "prettier --write \"extensions/**/*.ts\" \"modules/**/*.ts\"",
+    "lint": "eslint \"{extensions,modules}/**/*.ts\"",
+    "lint:fix": "eslint \"{extensions,modules}/**/*.ts\" --fix",
+    "prepare": "husky install"
+  },
   "dependencies": {
     "hexabot": "^2.0.0",
     "@nestjs/common": "^10.0.0",
     "hexabot-helper-ollama": "^2.0.0",
     "hexabot-plugin-ollama": "^2.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "~3.6.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-license-header": "^0.6.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.0.0"
   }
 }

@@ -14,9 +14,9 @@ import {
   OutgoingMessageFormat,
   StdOutgoingTextEnvelope,
 } from '@/chat/schemas/types/message';
+import { BaseBlockPlugin } from '@/plugins/base-block-plugin';
 import { PluginService } from '@/plugins/plugins.service';
 import { PluginBlockTemplate } from '@/plugins/types';
-import { BaseBlockPlugin } from '@/plugins/base-block-plugin';
 
 import SETTINGS from './settings';
 
@@ -32,7 +32,7 @@ export class HelloPlugin extends BaseBlockPlugin<typeof SETTINGS> {
     return __dirname;
   }
 
-  async process(block: Block, context: Context, _convId: string) {
+  async process(block: Block, _context: Context, _convId: string) {
     const args = this.getArguments(block);
 
     const envelope: StdOutgoingTextEnvelope = {
