@@ -1,6 +1,6 @@
-# Hexabot Template Starter
+# Hexabot Template Using Ludwig NLU
 
-Welcome to the **Hexabot Template Starter** repository! This template provides everything you need to get started with building a custom Hexabot project. It includes essential folders and files to help you extend Hexabot, define your own modules, and quickly run your project in Docker. Below you'll find details on the structure and how to use this template.
+Welcome to the **Hexabot Template Ludwig** repository! This template provides everything you need to get started with building a custom Hexabot project. It includes essential folders and files to help you extend Hexabot, define your own modules, and quickly run your project in Docker. Below you'll find details on the structure and how to use this template.
 
 Not familiar with [Hexabot](https://hexabot.ai/) ? It's an open-source chatbot / agent solution that allows users to create and manage AI-powered, multi-channel, and multilingual chatbots with ease. If you would like to learn more, please visit the [official github repo](https://github.com/Hexastack/Hexabot/).
 
