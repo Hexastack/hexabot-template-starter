@@ -14,7 +14,7 @@ services:
     volumes:
       - ../modules:/app/src/extra
       - ../extensions:/app/src/.hexabot/custom/extensions
-      - api-data:/uploads
+      - api-data:/app/uploads
     depends_on:
       mongo:
         condition: service_healthy
