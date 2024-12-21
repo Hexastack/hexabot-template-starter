@@ -14,7 +14,7 @@ services:
       - ../ludwig-nlu/data:/data 
       - ../ludwig-nlu/results:/results
       - ../ludwig-nlu/cli.py:/usr/local/lib/python3.8/site-packages/ludwig/cli.py
-      - ../ludwig-nlu/multi_serve_hf.py:/usr/local/lib/python3.8/site-packages/ludwig/multi_serve_hf.py
+      - ../ludwig-nlu/multi_serve.py:/usr/local/lib/python3.8/site-packages/ludwig/multi_serve.py
       - ludwig-nlu-repos:/app/repos
     networks:
       - ludwig-nlu-network
