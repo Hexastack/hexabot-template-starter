@@ -9,6 +9,7 @@ input_features:
         num_layers: 2
         reduce_output: null
       preprocessing:
+        # lowercase: true
         tokenizer: ngram
         ngram_size: 3
 

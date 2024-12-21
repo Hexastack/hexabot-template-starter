@@ -4,20 +4,20 @@ services:
   ludwig-nlu-api:
     image: ludwigai/ludwig:master
     container_name: ludwig-nlu-api
-    command: >-
-      multi_serve_hf
-      --model_paths '${MODEL_PATHS}' --port ${LUDWIG_NLU_PORT}
     stdin_open: true
     tty: true
-    env_file: .env
+    env_file: ./.env
+    command: >-
+      multi_serve
+      --model_paths '${MODEL_PATHS}' --mode ${MODE} --port ${PORT} --host ${HOST} 
+    volumes:
+      - ../ludwig-nlu/data:/data 
+      - ../ludwig-nlu/results:/results
+      - ../ludwig-nlu/cli.py:/usr/local/lib/python3.8/site-packages/ludwig/cli.py
+      - ../ludwig-nlu/multi_serve_hf.py:/usr/local/lib/python3.8/site-packages/ludwig/multi_serve_hf.py
+      - ludwig-nlu-repos:/app/repos
     networks:
       - ludwig-nlu-network
-    volumes:
-      - ../hexabot-ludwig-nlu/data:/data 
-      - ../hexabot-ludwig-nlu/results:/results
-      - ../hexabot-ludwig-nlu/cli.py:/usr/local/lib/python3.8/site-packages/ludwig/cli.py
-      - ../hexabot-ludwig-nlu/multi_serve_hf.py:/usr/local/lib/python3.8/site-packages/ludwig/multi_serve_hf.py
-      - ludwig-nlu-data:/app/repos
     ports:
       - "${LUDWIG_NLU_PORT}:${LUDWIG_NLU_PORT}"
       
@@ -26,7 +26,7 @@ services:
       - ludwig-nlu-network
 
 volumes:
-  ludwig-nlu-data:
+  ludwig-nlu-repos:
 
 networks:
   ludwig-nlu-network:

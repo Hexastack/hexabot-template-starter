@@ -2,6 +2,7 @@ input_features:
   - name: text
     type: text 
     preprocessing:
+      # lowercase: true
       tokenizer: ngram
       ngram: 3
       max_sequence_length: 256

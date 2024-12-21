@@ -96,10 +96,10 @@ Available sub-commands:
 
         serve.cli(sys.argv[2:])
 
-    def multi_serve_hf(self):
-        from ludwig import multi_serve_hf
+    def multi_serve(self):
+        from ludwig import multi_serve
 
-        multi_serve_hf.cli(sys.argv[2:])
+        multi_serve.cli(sys.argv[2:])
 
     def visualize(self):
         from ludwig import visualize
