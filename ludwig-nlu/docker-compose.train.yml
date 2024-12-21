@@ -7,6 +7,8 @@ services:
       experiment --config /src/${MODEL_NAME}.yaml
                  --dataset /data/train_data.json
                  --output_directory /results
+    env_file:
+      - .env
     volumes:
       - ./data:/data
       - ./src:/src

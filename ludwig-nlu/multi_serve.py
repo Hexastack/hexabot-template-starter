@@ -193,13 +193,14 @@ def server(models, allowed_origins=None):
             form = await request.form()
             model_names = form.get("model")  # Single model or list of models
             model_names = model_names.split(",") if model_names else None
-            entry, files = convert_input(form, None)  # Input compatible with all models
+            files = []
         except Exception:
             logger.exception("Failed to parse predict form")
             return NumpyJSONResponse(COULD_NOT_RUN_INFERENCE_ERROR, status_code=500)
 
         async def predict_by_model(model_name: str, model: LudwigModel) -> dict:
             try:
+                entry, files = convert_input(form, model.model.input_features)  # Input compatible with all models
                 input_features = {f[COLUMN] for f in model.config["input_features"]}
                 if (entry.keys() & input_features) != input_features:
                     missing_features = set(input_features) - set(entry.keys())
@@ -387,6 +388,7 @@ async def are_models_loaded(models: Dict[str, LudwigModel]) -> bool:
 
 def run_server(
     model_paths: dict,  # Dictionary of model IDs to paths
+    mode: str,
     host: str,
     port: int,
     allowed_origins: list,
@@ -398,9 +400,11 @@ def run_server(
     
     models = {}
     for model_name, repo_id in model_paths.items():
-        repo_id, repo_dir, save_dir = process_repo_name(repo_id, "model")
-        models[model_name] = load_model(save_dir, repo_dir, repo_id=repo_id, backend="local")
-    
+        if mode == "huggingface":
+            repo_id, repo_dir, save_dir = process_repo_name(repo_id, "model")
+            models[model_name] = load_model(save_dir, repo_dir, repo_id=repo_id, backend="local")
+        elif mode == "local":  
+            models[model_name] = LudwigModel.load(repo_id, backend="local")
 
     # Check if models are loaded
     if not asyncio.run(are_models_loaded(models)):
@@ -418,13 +422,14 @@ def run_server(
 
 def cli(sys_argv):
     parser = argparse.ArgumentParser(
-        description="This script serves multiple pretrained models", prog="ludwig multi_serve_hf", usage="%(prog)s [options]"
+        description="This script serves multiple pretrained models", prog="ludwig multi_serve", usage="%(prog)s [options]"
     )
 
     # ----------------
     # Model parameters
     # ----------------
     parser.add_argument("-m", "--model_paths", help="model to load", required=True)
+    parser.add_argument("-mode", "--mode", choices=["huggingface", "local"], help="Model loading mode: either fetch them from HuggingFace or locally ", required=True)
 
     parser.add_argument(
         "-l",
@@ -469,7 +474,7 @@ def cli(sys_argv):
 
     print_ludwig("Serve", LUDWIG_VERSION)
 
-    run_server(args.model_paths, args.host, args.port, args.allowed_origins)
+    run_server(args.model_paths, args.mode, args.host, args.port, args.allowed_origins)
 
 
 if __name__ == "__main__":
