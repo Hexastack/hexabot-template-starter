@@ -1,6 +1,6 @@
 # Hexabot Template Using Ludwig NLU
 
-Welcome to the **Hexabot Template Ludwig** repository! This template provides everything you need to get started with building a custom Hexabot project. It includes essential folders and files to help you extend Hexabot, define your own modules, and quickly run your project in Docker. Below you'll find details on the structure and how to use this template.
+Welcome to the **Hexabot Template Ludwig** repository! This template provides everything you need to get started with building a custom Hexabot project adding the [Hexabot NLU Engine](https://github.com/Hexastack/hexabot-ludwig-nlu/). It includes essential folders and files to help you extend Hexabot, define your own modules, and quickly run your project in Docker. Below you'll find details on the structure and how to use this template.
 
 Not familiar with [Hexabot](https://hexabot.ai/) ? It's an open-source chatbot / agent solution that allows users to create and manage AI-powered, multi-channel, and multilingual chatbots with ease. If you would like to learn more, please visit the [official github repo](https://github.com/Hexastack/Hexabot/).
 
@@ -31,40 +31,38 @@ Not familiar with [Hexabot](https://hexabot.ai/) ? It's an open-source chatbot /
    Use the Hexabot CLI to create a new chatbot project:
 
    ```bash
-   hexabot create my-chatbot
+   hexabot create my-chatbot --template Hexastack/hexabot-template-ludwig
    ```
 
 3. **Configure Your Environment**:
 
-   - Copy the `.env.example` file to `.env` and customize it according to your environment and configuration needs.
+   - Initialize your newly created chatbot project  
 
    ```bash
-   cp .env.example .env
+   cd my-chatbot
+   hexabot init
    ```
+   Make sure you customize your `.env` file in `./my-chatbot/docker` directory and tailor it accordingly
+   to your needs.
 
 4. **Run the Project**:
    Navigate into the newly created folder and run the following command to start the project in development mode:
 
    ```bash
-   hexabot dev
+   hexabot dev --services ludwig-nlu,ollama
    ```
 
    For production mode, you can use:
 
    ```bash
-   hexabot start
+   hexabot start --services ludwig-nlu,ollama
    ```
 
    _Note_: The first run may take some time as it needs to download all required Docker images.
 
 5. **Configure your NLU Engine**:
-   After creating your new project, the **Hexabot LLM-NLU Engine** will be enabled by default. This NLU engine relies on one of the following LLM helpers being present, you can enable one of these by following the steps detailed in [LLM NLU Engine](https://docs.hexabot.ai/user-guide/nlu/nlu-engines/llm-nlu-engine) documentation page:
+   After creating your new project, the **Hexabot Kudwig NLU Engine** will be added by default. This NLU engine relies on the [Hexabot Helper Ludwig], you can enable it by following the steps detailed in [LLM NLU Engine](https://docs.hexabot.ai/user-guide/nlu/nlu-engines/ludwig-nlu-engine) documentation page:
 
-   - Ollama Helper (`hexabot-helper-ollama`)
-   - Google Gemini Helper (`hexabot-helper-gemini`)
-   - OpenAI ChatGPT Helper (`hexabot-helper-chatgpt`)
-
-   You must follow the instructions of the selected LLM helper in their specific documentation before starting the project.
 
 ## Built-in Features
 

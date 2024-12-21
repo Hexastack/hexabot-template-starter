@@ -1,4 +1,4 @@
-# hexabot-ludwig-nlu
+# Hexabot NLU Engine using Ludwig 
 ## Overview
 This repository contains a **Natural Language Understanding (NLU)** engine developed using **Ludwig AI**, a high-level, declarative machine learning framework. Ludwig streamlines the process of training and serving machine learning models, enabling rapid prototyping and development without requiring extensive programming skills. For more details, please refer to https://ludwig.ai/latest/. 
 
@@ -112,11 +112,23 @@ docker compose -f docker-compose.visualize.yml up
 
 ### Serving
 
-Set up a serve API in a dockerized environment using the following command. Please note that we're currently downloading models from **HuggingFace** for inference. Serving multiple models trained by the user in a single API instance will be added in the future.
+Set up a serve API in a dockerized environment using the following command. There are two supported modes for serving models. Either you download HuggingFace models or you use your custom locally trained models for inference.
+
+#### HuggingFace Serving
+
+Please remember to adjust your configuration accordingly and set up the correct environment variables. 
 
 ```bash
-docker compose -f docker-compose.serve.yml up
+docker compose -f docker-compose.serve-hf.yml up
 ```
+
+#### Local Serving
+
+Please remember to adjust your configuration accordingly and set up the correct environment variables. 
+```bash
+docker compose -f docker-compose.serve-local.yml up
+```
+
 ## Uploading Models to HuggingFace
 
 You can upload your trained models to the Hugging Face Hub to make them publicly accessible or to share them with collaborators. The Hugging Face Command Line Interface (CLI) simplifies the process.
