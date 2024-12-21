@@ -61,8 +61,7 @@ Not familiar with [Hexabot](https://hexabot.ai/) ? It's an open-source chatbot /
    _Note_: The first run may take some time as it needs to download all required Docker images.
 
 5. **Configure your NLU Engine**:
-   After creating your new project, the **Hexabot Kudwig NLU Engine** will be added by default. This NLU engine relies on the [Hexabot Helper Ludwig], you can enable it by following the steps detailed in [LLM NLU Engine](https://docs.hexabot.ai/user-guide/nlu/nlu-engines/ludwig-nlu-engine) documentation page:
-
+   After creating your new project, the **Hexabot Ludwig NLU Engine** will be added by default. This NLU engine relies on the [Hexabot Helper Ludwig], you can enable it by following the steps detailed in [Ludwig NLU Engine](https://docs.hexabot.ai/user-guide/nlu/nlu-engines/ludwig-nlu-engine) documentation page:
 
 ## Built-in Features
 
