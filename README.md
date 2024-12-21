@@ -66,7 +66,7 @@ Not familiar with [Hexabot](https://hexabot.ai/) ? It's an open-source chatbot /
 ## Built-in Features
 
 - **Generative AI Support**: This template includes both the **ollama helper** and **plugin** by default to help you get started with generative AI features.
-- **NLU API**: A built-in Natural Language Understanding (NLU) API is provided for intent recognition and language detection.
+- **NLU Ludwig API**: A [Ludwig AI](https://ludwig.ai/latest/) Based serving API is provided for intent recognition and language detection.
 
 ## Extending Hexabot
 
