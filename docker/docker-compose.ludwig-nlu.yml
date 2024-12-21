@@ -9,7 +9,7 @@ services:
     env_file: ./.env
     command: >-
       multi_serve
-      --model_paths '${MODEL_PATHS}' --mode ${MODE} --port ${PORT} --host ${HOST} 
+      --model_paths '${MODEL_PATHS}' --mode ${LUDWIG_NLU_MODE} --port ${LUDWIG_NLU_PORT} --host ${LUDWIG_NLU_HOST} 
     volumes:
       - ../ludwig-nlu/data:/data 
       - ../ludwig-nlu/results:/results
