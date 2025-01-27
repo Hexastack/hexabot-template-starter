@@ -24,5 +24,10 @@
       "@/contrib/extensions/helpers/*": ["node_modules/*"]
     }
   },
-  "include": ["modules/**/*.ts", "extensions/**/*.ts", "node_modules/hexabot/**/*.d.ts"]
+  "include": [
+    "modules/**/*.ts",
+    "extensions/**/*.ts",
+    "node_modules/hexabot/**/*.d.ts",
+    "jest.config.js"
+  ]
 }
