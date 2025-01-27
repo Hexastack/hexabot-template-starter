@@ -11,11 +11,11 @@ services:
       multi_serve
       --model_paths '${LUDWIG_MODEL_PATHS}' --mode ${LUDWIG_NLU_MODE} --port ${LUDWIG_NLU_PORT} --host ${LUDWIG_NLU_HOST} 
     volumes:
-      - ../ludwig-nlu/data:/data 
-      - ../ludwig-nlu/results:/results
+      - ../ludwig-nlu/data:/data/data 
+      - ../ludwig-nlu/results:/data/results
       - ../ludwig-nlu/cli.py:/usr/local/lib/python3.8/site-packages/ludwig/cli.py
       - ../ludwig-nlu/multi_serve.py:/usr/local/lib/python3.8/site-packages/ludwig/multi_serve.py
-      - ludwig-nlu-repos:/app/repos
+      - ludwig-nlu-repos:/data/repos
     networks:
       - ludwig-nlu-network
     ports:

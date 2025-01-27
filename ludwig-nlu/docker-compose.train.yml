@@ -4,12 +4,12 @@ services:
   ludwig:
     image: ludwigai/ludwig:master
     command: >
-      experiment --config /src/${MODEL_NAME}.yaml
-                 --dataset /data/train_data.json
-                 --output_directory /results
+      experiment --config /data/src/${MODEL_NAME}.yaml
+                 --dataset /data/data/train_data.json
+                 --output_directory /data/results
     env_file:
       - .env
     volumes:
-      - ./data:/data
-      - ./src:/src
-      - ./results/results
+      - ./data:/data/data
+      - ./src:/data/src
+      - ./results:/data/results
