@@ -8,3 +8,9 @@ Dockerfile
 .husky
 .prettierrc
 README.md
+coverage*
+__test__
+*.spec.ts
+*.mock.ts
+tsconfig.test.json
+jest.config.js
