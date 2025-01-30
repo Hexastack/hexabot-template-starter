@@ -2,7 +2,6 @@ services:
 
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama
     volumes:
       - ollama-data:/root/.ollama
     # deploy:
