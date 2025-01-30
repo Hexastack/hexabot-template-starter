@@ -27,7 +27,6 @@
   "include": [
     "modules/**/*.ts",
     "extensions/**/*.ts",
-    "node_modules/hexabot/**/*.d.ts",
-    "jest.config.js"
+    "node_modules/hexabot/**/*.d.ts"
   ]
 }

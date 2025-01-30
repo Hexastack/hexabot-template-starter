@@ -25,4 +25,10 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/node_modules/hexabot/src/$1',
   },
   transformIgnorePatterns: ['/node_modules/(?!hexabot)/'],
+  globals: {
+    'ts-jest': {
+      diagnostics: false,
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
 };
