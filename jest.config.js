@@ -19,16 +19,16 @@ module.exports = {
   rootDir: './',
   testRegex: '.*\\.spec\\.ts$',
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        diagnostics: false,
+        tsconfig: 'tsconfig.test.json',
+      },
+    ],
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/node_modules/hexabot/src/$1',
   },
   transformIgnorePatterns: ['/node_modules/(?!hexabot)/'],
-  globals: {
-    'ts-jest': {
-      diagnostics: false,
-      tsconfig: 'tsconfig.test.json',
-    },
-  },
 };
