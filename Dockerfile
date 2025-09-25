@@ -4,7 +4,7 @@ FROM hexastack/hexabot-base:latest AS base
 WORKDIR /app
 
 # Stage 1: Builder - Download and merge Hexabot API with new project dependencies
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -27,7 +27,7 @@ COPY ./extensions ./src/.hexabot/custom/extensions
 RUN npm run build
 
 # Stage 2: Development environment
-FROM node:18-alpine AS development
+FROM node:20-alpine AS development
 
 WORKDIR /app
 
@@ -53,7 +53,7 @@ EXPOSE 3000
 CMD ["npm", "run", "start:debug"]
 
 # Stage 3: Production environment
-FROM node:18-alpine AS production
+FROM node:20-alpine AS production
 
 WORKDIR /app
 
