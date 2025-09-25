@@ -34,5 +34,8 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.4.1",
     "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": "^20.18.1"
   }
 }
